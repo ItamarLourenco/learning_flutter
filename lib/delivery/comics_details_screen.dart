@@ -20,14 +20,14 @@ class ComicsDetailScreen extends StatefulWidget {
 }
 
 class _ComicsDetailScreen extends State<ComicsDetailScreen> {
-  late ComicsListBloc _comicsBloc;
+  late ComicsBloc _comicsBloc;
   late int id;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     id = ModalRoute.of(context)!.settings.arguments as int;
-    _comicsBloc = ComicsListBloc(widget.comicsUseCase);
+    _comicsBloc = ComicsBloc(widget.comicsUseCase);
     _comicsBloc.add(GetByIdComicsEvent(id: id));
   }
 
@@ -35,7 +35,7 @@ class _ComicsDetailScreen extends State<ComicsDetailScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: const MyAppBar(title: "Detalhe Comics"),
-        body: BlocBuilder<ComicsListBloc, ComicsState>(
+        body: BlocBuilder<ComicsBloc, ComicsState>(
           bloc: _comicsBloc,
           builder: (context, state) {
             switch(state.state){

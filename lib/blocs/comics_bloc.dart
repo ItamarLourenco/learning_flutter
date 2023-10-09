@@ -25,10 +25,10 @@ class ComicsState {
 }
 
 
-class ComicsListBloc extends Bloc<ComicsEvent, ComicsState>{
+class ComicsBloc extends Bloc<ComicsEvent, ComicsState>{
   final ComicsUseCaseInterface comicsUseCase;
 
-  ComicsListBloc(this.comicsUseCase): super(ComicsState(ComicsBlocState.initial));
+  ComicsBloc(this.comicsUseCase): super(ComicsState(ComicsBlocState.initial));
 
   @override
   Stream<ComicsState> mapEventToState(ComicsEvent event) async* {

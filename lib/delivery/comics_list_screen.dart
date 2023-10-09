@@ -20,12 +20,12 @@ class ComicsListScreen extends StatefulWidget {
 }
 
 class _ComicsListScreenState extends State<ComicsListScreen> {
-  late ComicsListBloc _comicsBloc;
+  late ComicsBloc _comicsBloc;
 
   @override
   void initState() {
     super.initState();
-    _comicsBloc = ComicsListBloc(widget.comicsUseCase);
+    _comicsBloc = ComicsBloc(widget.comicsUseCase);
     _comicsBloc.add(FetchComicsEvent());
   }
 
@@ -33,7 +33,7 @@ class _ComicsListScreenState extends State<ComicsListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: const MyAppBar(title: "Comics"),
-        body: BlocBuilder<ComicsListBloc, ComicsState>(
+        body: BlocBuilder<ComicsBloc, ComicsState>(
           bloc: _comicsBloc,
           builder: (context, state) {
             switch (state.state) {
